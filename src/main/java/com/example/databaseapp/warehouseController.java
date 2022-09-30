@@ -50,7 +50,9 @@ public class warehouseController extends loginPageController implements Initiali
     }
     public ObservableList<Product> getProduct() {
         products = FXCollections.observableArrayList();
-        products.add(new Product("1", "OrbitalKeys", "20"));
+        for(int i=0; i<listOfProducts.size();i++){
+            products.add(listOfProducts.get(i));
+        }
         return products;
     }
     public void setProduct(Product product){
@@ -59,6 +61,15 @@ public class warehouseController extends loginPageController implements Initiali
 
     public void changeToMain(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void removeProduct(ActionEvent event) throws IOException {
+
+        listOfProducts.remove(tableView.getSelectionModel().getSelectedItem());
+        root = FXMLLoader.load(getClass().getResource("warehousePage.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

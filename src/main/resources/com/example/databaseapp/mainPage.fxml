@@ -25,6 +25,7 @@
             <Button fx:id="addButton" layoutX="27.0" layoutY="10.0" mnemonicParsing="false" onAction="#addClient" prefHeight="47.0" prefWidth="78.0" style="-fx-text-fill: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 3, 0, 0, 0); -fx-background-color: #3ead83#3ead83;" text="ADD" />
             <Button layoutX="119.0" layoutY="10.0" mnemonicParsing="false" onAction="#removeClient" prefHeight="47.0" prefWidth="78.0" style="-fx-text-fill: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 3, 0, 0, 0); -fx-background-color: #3ead83#3ead83;" text="REMOVE" />
             <Button fx:id="warehouseButton" layoutX="427.0" layoutY="10.0" mnemonicParsing="false" onAction="#openWarehouse" prefHeight="47.0" prefWidth="98.0" style="-fx-text-fill: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 3, 0, 0, 0); -fx-background-color: #3ead83#3ead83;" text="WAREHOUSE" />
+            <Button layoutX="211.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="78.0" style="-fx-text-fill: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 3, 0, 0, 0); -fx-background-color: #3ead83#3ead83;" text="EDIT" />
          </children>
       </AnchorPane>
    </children>

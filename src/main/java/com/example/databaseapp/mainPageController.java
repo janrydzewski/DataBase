@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class mainPageController extends addClientController implements Initializable {
+public class mainPageController extends loginPageController implements Initializable {
 
     @FXML
     private TableView<Client> tableView;
@@ -40,6 +40,7 @@ public class mainPageController extends addClientController implements Initializ
     private Button addButton, openWarehouse;
     @FXML
     private GridPane addClientPane;
+
 
     ObservableList<Client> clients;
 
@@ -60,25 +61,42 @@ public class mainPageController extends addClientController implements Initializ
         quantityColumn.setCellValueFactory(new PropertyValueFactory<Client, SimpleStringProperty>("Quantity"));
 
         tableView.setItems(getClient());
+
     }
 
     public ObservableList<Client> getClient() {
         clients = FXCollections.observableArrayList();
-        clients.add(new Client("Shiloh", "Nelson", "London", "OrbitalKeys", "5"));
-        clients.add(new Client("Tommie", "Goulding", "Cuahland", "InstaPress", "2"));
-        clients.add(new Client("Arwa", "Glenn", "Hiding", "UnoWear", "9"));
-        clients.add(new Client("Evelina", "Sellers", "Sluubury", "SwishWallet", "15"));
-        clients.add(new Client("Macsen", "Howard", "Slealedo", "HandyMop", "19"));
+        for(int i=0; i<listOfClients.size();i++){
+            clients.add(listOfClients.get(i));
+        }
+
         return clients;
     }
     public void setClient(Client client){
         this.client = client;
     }
-    public void removeClient() {
-        clients.remove(tableView.getSelectionModel().getSelectedItem());
+    public void removeClient(ActionEvent event) throws IOException {
+
+        listOfClients.remove(tableView.getSelectionModel().getSelectedItem());
+        root = FXMLLoader.load(getClass().getResource("mainPage.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void editClient(){
     }
     public void addClient() throws IOException {
-            add();
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("addClient.fxml"));
+        DialogPane addClientPane = fxmlLoader.load();
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setDialogPane(addClientPane);
+        Optional<ButtonType> clickedButton = dialog.showAndWait();
+        if(clickedButton.get() == (ButtonType.OK)){
+            System.out.println("123");
+        }
+
     }
     public void openWarehouse(ActionEvent event) throws IOException {
 
